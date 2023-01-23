@@ -15,7 +15,7 @@ void main() {
     repository = GitRepMockRepository();
     usecase = GetGitRepUseCase(repository: repository);
   });
-  group('Get GitRep Use Case', () {
+  group('Get GitRep Use Case Test', () {
     test('Should be return GitRepModel when Load Usecase', () async {
       final expected = gitRepMockEntity;
       when(() => repository.load()).thenAnswer((_) async => Right(expected));
