@@ -8,6 +8,6 @@ class GetGitRepUseCase extends UseCase {
   GetGitRepUseCase({required this.repository});
   @override
   Future<Either<Failure, dynamic>> call() {
-    return repository.call();
+    return repository.load();
   }
 }

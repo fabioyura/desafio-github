@@ -1,4 +1,21 @@
+import 'package:mocktail/mocktail.dart';
+import 'package:core/layers/domain/entities/git_rep.dart';
+import 'package:core/layers/domain/repositories/i_git_rep_repository.dart';
 import 'package:core/layers/data/models/git_rep_model.dart';
+
+class GitRepMockRepository extends Mock implements IGitRepRepository {}
+
+GitRep gitRepMockEntity = const GitRep(
+  name: 'LeetCodeAnimation',
+  description:
+      'Demonstrate all the questions on LeetCode in the form of animation.（用动画的形式呈现解LeetCode题目的思路）',
+  userName: 'MisterBooo',
+  userAvatarURL: 'https://avatars.githubusercontent.com/u/15308811?v=4',
+  pullsURL:
+      'https://api.github.com/repos/MisterBooo/LeetCodeAnimation/pulls{/number}',
+  stars: 1,
+  forks: 1,
+);
 
 GitRepModel gitRepMockModel = const GitRepModel(
   name: 'LeetCodeAnimation',

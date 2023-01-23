@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 class PullRequestRepositoryImp implements IPullRequestRepository {
   @override
-  Future<Either<Failure, List<PullRequest>>> call() {
+  Future<Either<Failure, PullRequest>> load() {
     // TODO: implement call
     throw UnimplementedError();
   }

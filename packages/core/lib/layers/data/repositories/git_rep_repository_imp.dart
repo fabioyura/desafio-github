@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 class GitRepRepositoryImp implements IGitRepRepository {
   @override
-  Future<Either<Failure, List<GitRep>>> call() {
+  Future<Either<Failure, GitRep>> load() {
     // TODO: implement call
     throw UnimplementedError();
   }
