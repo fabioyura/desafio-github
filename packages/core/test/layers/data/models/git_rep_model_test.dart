@@ -9,11 +9,11 @@ void main() {
   late Map<dynamic, dynamic> map;
   setUp(() {
     model = gitRepMockModel;
-    map = gitRepMockMap();
+    map = gitRepMockToMap();
   });
   group('Git Repository Model Test', () {
     test('Should return GitRepModel from Map', () {
-      final result = GitRepModel.fromMap(jsonDecode(gitRepMockJson));
+      final result = GitRepModel.fromMap(jsonDecode(gitRepMockFromJson));
       expect(model, result);
     });
 

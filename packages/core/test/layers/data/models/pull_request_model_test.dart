@@ -10,11 +10,12 @@ void main() {
   late Map<dynamic, dynamic> map;
   setUp(() {
     model = pullRequestMockModel;
-    map = pullRequestMockMap();
+    map = pullRequestMockToMap();
   });
   group('Pull Request Model Test', () {
     test('Should return PR Model fromMap', () {
-      var result = PullRequestModel.fromMap(jsonDecode(pullRequestMockJson));
+      var result =
+          PullRequestModel.fromMap(jsonDecode(pullRequestMockFromJson));
       expect(result, model);
     });
 

@@ -12,7 +12,7 @@ GitRepModel gitRepMockModel = const GitRepModel(
   forks: 1,
 );
 
-gitRepMockMap() {
+gitRepMockToMap() {
   return {
     "name": "LeetCodeAnimation",
     "description":
@@ -28,7 +28,7 @@ gitRepMockMap() {
   };
 }
 
-const gitRepMockJson = """
+const gitRepMockFromJson = """
 {
   "name" : "LeetCodeAnimation",
   "description" : "Demonstrate all the questions on LeetCode in the form of animation.（用动画的形式呈现解LeetCode题目的思路）",

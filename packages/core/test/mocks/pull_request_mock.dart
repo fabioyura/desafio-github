@@ -8,7 +8,7 @@ PullRequestModel pullRequestMockModel = PullRequestModel(
   createdAt: DateTime(2020),
 );
 
-Map pullRequestMockMap() {
+Map pullRequestMockToMap() {
   return {
     "title": "title",
     "body": "body",
@@ -17,7 +17,7 @@ Map pullRequestMockMap() {
   };
 }
 
-const pullRequestMockJson = """
+const pullRequestMockFromJson = """
 {
   "title": "title",
   "body": "body",
