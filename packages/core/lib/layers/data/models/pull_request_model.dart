@@ -2,20 +2,20 @@ import 'dart:convert';
 import 'package:core/layers/domain/entities/pull_request.dart';
 
 class PullRequestModel extends PullRequest {
-  const PullRequestModel(
-      {required super.title,
-      required super.body,
-      required super.userName,
-      required super.userAvatarURL,
-      required super.createdAt});
+  const PullRequestModel({
+    required super.title,
+    required super.body,
+    required super.userName,
+    required super.userAvatarURL,
+    required super.createdAt,
+  });
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'body': body,
-      'userName': userName,
-      'userAvatarURL': userAvatarURL,
-      'createdAt': createdAt.millisecondsSinceEpoch,
+      "user": {'login': userName, 'avatar_url': userAvatarURL},
+      'created_at': createdAt.millisecondsSinceEpoch,
     };
   }
 
