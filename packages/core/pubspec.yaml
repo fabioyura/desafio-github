@@ -1,0 +1,31 @@
+name: core
+description: A new Flutter package project.
+version: 0.0.1
+
+
+environment:
+  sdk: ">=2.17.1 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # PATTERNS
+  dartz: ^0.10.1
+  equatable: ^2.0.5
+  bloc: ^8.1.0
+
+  # DATA
+  http: ^0.13.5
+
+  # UTILS
+  mocktail: ^0.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+flutter:
