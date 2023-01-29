@@ -18,7 +18,7 @@ class GitRepModel extends GitRep {
       "description": description,
       "owner": {"login": userName, "avatar_url": userAvatarURL},
       "pulls_url": pullsURL,
-      "starsgazers_count": stars,
+      "stargazers_count": stars,
       "forks_count": forks,
     };
   }
@@ -30,7 +30,7 @@ class GitRepModel extends GitRep {
       userName: map['owner']['login'] ?? '',
       userAvatarURL: map['owner']['avatar_url'] ?? '',
       pullsURL: map['pulls_url'],
-      stars: map['starsgazers_count']?.toInt() ?? 0,
+      stars: map['stargazers_count']?.toInt() ?? 0,
       forks: map['forks_count']?.toInt() ?? 0,
     );
   }

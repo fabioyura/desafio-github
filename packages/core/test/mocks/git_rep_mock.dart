@@ -63,7 +63,7 @@ gitRepMockToMap() {
     },
     "pulls_url":
         "https://api.github.com/repos/MisterBooo/LeetCodeAnimation/pulls{/number}",
-    "starsgazers_count": 1,
+    "stargazers_count": 1,
     "forks_count": 1
   };
 }
@@ -78,7 +78,7 @@ const gitRepMockFromJson = """
       "avatar_url" : "https://avatars.githubusercontent.com/u/15308811?v=4"
     },
   "pulls_url": "https://api.github.com/repos/MisterBooo/LeetCodeAnimation/pulls{/number}",
-  "starsgazers_count" : 1,
+  "stargazers_count" : 1,
   "forks_count" : 1
 }
 """;
@@ -95,7 +95,7 @@ lalaMock() {
       },
       "pulls_url":
           "https://api.github.com/repos/MisterBooo/LeetCodeAnimation/pulls{/number}",
-      "starsgazers_count": 1,
+      "stargazers_count": 1,
       "forks_count": 1
     }
   ];
