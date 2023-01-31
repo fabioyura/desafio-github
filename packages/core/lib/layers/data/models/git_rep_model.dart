@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:core/layers/domain/entities/git_rep.dart';
 
 class GitRepModel extends GitRep {
@@ -39,4 +40,14 @@ class GitRepModel extends GitRep {
 
   factory GitRepModel.fromJson(String source) =>
       GitRepModel.fromMap(json.decode(source));
+
+  Future<dynamic> fetchData() async {
+    final response = await http.get(Uri.parse(pullsURL));
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 }

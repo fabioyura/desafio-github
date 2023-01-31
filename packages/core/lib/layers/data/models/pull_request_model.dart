@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:core/layers/domain/entities/git_rep.dart';
 import 'package:core/layers/domain/entities/pull_request.dart';
 
 class PullRequestModel extends PullRequest {
@@ -26,6 +27,16 @@ class PullRequestModel extends PullRequest {
       userName: map['user']['login'] ?? '',
       userAvatarURL: map['user']['avatar_url'] ?? '',
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
+    );
+  }
+
+  factory PullRequestModel.fromEntity(GitRep entity) {
+    return PullRequestModel(
+      title: entity.name,
+      body: entity.description,
+      userName: entity.userName,
+      userAvatarURL: entity.userAvatarURL,
+      createdAt: DateTime(2),
     );
   }
 
