@@ -1,10 +1,75 @@
+import 'package:app/helpers/injection.dart';
+import 'package:app/src/widgets/list_items/pr_list_item.dart';
+import 'package:core/core/bloc/pr_bloc/pr_bloc.dart';
+import 'package:core/core/bloc/pr_bloc/pr_event.dart';
+import 'package:core/core/bloc/pr_bloc/pr_state.dart';
+import 'package:core/layers/data/datasource/remote/pull_request_remote_datasource_imp.dart';
+import 'package:core/layers/data/repositories/pull_request_repository_imp.dart';
+import 'package:core/layers/domain/entities/git_rep.dart';
+import 'package:core/layers/domain/entities/pull_request.dart';
+import 'package:core/layers/domain/usecases/get_pull_request_usecase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PullRequestPage extends StatelessWidget {
-  const PullRequestPage({Key? key}) : super(key: key);
+class PullRequestPage extends StatefulWidget {
+  final GitRep rep;
+  const PullRequestPage({Key? key, required this.rep}) : super(key: key);
+
+  @override
+  State<PullRequestPage> createState() => _PullRequestPageState();
+}
+
+class _PullRequestPageState extends State<PullRequestPage> {
+  late final PrBloc bloc;
+  late final PullRequestRemoteDataSourceImp datasource =
+      PullRequestRemoteDataSourceImp();
+
+  late final PullRequestRepositoryImp repository =
+      PullRequestRepositoryImp(dataSource: datasource);
+
+  late final GetPullRequestUseCase useCase =
+      GetPullRequestUseCase(repository: repository);
+
+  @override
+  void initState() {
+    bloc = PrBloc(loadCase: useCase, rep: widget.rep);
+    bloc.add(OnPrEventLoad());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return BlocProvider(
+      create: (context) => bloc,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(),
+        ),
+        body: SingleChildScrollView(
+          child: BlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is PrStateNotLoaded) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is PrStateEmpty) {
+                return const Text('Nennhum Pull Request Encontrado!');
+              } else if (state is PrStateLoaded) {
+                final List<PullRequest> prs = state.list;
+                return ListView.builder(
+                  itemCount: prs.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return PrListItem(pr: prs[index]);
+                  },
+                );
+              }
+              return const ListTile();
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

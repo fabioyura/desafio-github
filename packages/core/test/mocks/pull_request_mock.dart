@@ -11,7 +11,7 @@ PullRequest pullRequestMockEntity = PullRequest(
   body: 'body',
   userName: 'userName',
   userAvatarURL: 'userAvatarURL',
-  createdAt: DateTime(2020),
+  //createdAt: DateTime(2020),
 );
 
 PullRequestModel pullRequestMockModel = PullRequestModel(
@@ -19,7 +19,7 @@ PullRequestModel pullRequestMockModel = PullRequestModel(
   body: 'body',
   userName: 'userName',
   userAvatarURL: 'userAvatarURL',
-  createdAt: DateTime(2020),
+  //createdAt: DateTime(2020),
 );
 
 Map pullRequestMockToMap() {

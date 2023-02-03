@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:core/layers/domain/entities/git_rep.dart';
 import 'package:core/layers/domain/entities/pull_request.dart';
 
 class PullRequestModel extends PullRequest {
@@ -8,7 +7,7 @@ class PullRequestModel extends PullRequest {
     required super.body,
     required super.userName,
     required super.userAvatarURL,
-    required super.createdAt,
+    //required super.createdAt,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,7 +15,7 @@ class PullRequestModel extends PullRequest {
       'title': title,
       'body': body,
       "user": {'login': userName, 'avatar_url': userAvatarURL},
-      'created_at': createdAt.millisecondsSinceEpoch,
+      //'created_at': createdAt.millisecondsSinceEpoch,
     };
   }
 
@@ -26,17 +25,7 @@ class PullRequestModel extends PullRequest {
       body: map['body'] ?? '',
       userName: map['user']['login'] ?? '',
       userAvatarURL: map['user']['avatar_url'] ?? '',
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
-    );
-  }
-
-  factory PullRequestModel.fromEntity(GitRep entity) {
-    return PullRequestModel(
-      title: entity.name,
-      body: entity.description,
-      userName: entity.userName,
-      userAvatarURL: entity.userAvatarURL,
-      createdAt: DateTime(2),
+      //createdAt: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
     );
   }
 

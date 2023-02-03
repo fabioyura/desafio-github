@@ -5,16 +5,21 @@ class PullRequest extends Equatable {
   final String body;
   final String userName;
   final String userAvatarURL;
-  final DateTime createdAt;
+  //final DateTime createdAt;
 
   const PullRequest({
     required this.title,
     required this.body,
     required this.userName,
     required this.userAvatarURL,
-    required this.createdAt,
+    //required this.createdAt,
   });
 
   @override
-  List<Object?> get props => [title, body, userName, userAvatarURL, createdAt];
+  List<Object?> get props => [
+        title,
+        body,
+        userName,
+        userAvatarURL, /*createdAt*/
+      ];
 }

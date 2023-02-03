@@ -19,9 +19,9 @@ class PrStateError extends PrState {
 }
 
 class PrStateLoaded extends PrState {
-  final PullRequest pr;
-  PrStateLoaded({required this.pr});
+  final List<PullRequest> list;
+  PrStateLoaded({required this.list});
 
   @override
-  List<Object?> get props => [pr];
+  List<Object?> get props => [list];
 }

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:core/layers/domain/entities/git_rep.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:core/core/error/data_failure.dart';
@@ -14,18 +13,6 @@ class DataBase {
       //Catch the response.body and convert to List = JsonEncode
       //TODO: IMPLEMENT COMMENTARY
       final String json = jsonEncode(jsonDecode(response.body)["items"]);
-      return Right(json);
-    } else {
-      return Left(DataFailure(message: response.body));
-    }
-  }
-
-  Future<Either<DataFailure, String>> getPrHttp(String _url) async {
-    final String url = _url;
-    final response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      final String json = jsonDecode(response.body);
       return Right(json);
     } else {
       return Left(DataFailure(message: response.body));

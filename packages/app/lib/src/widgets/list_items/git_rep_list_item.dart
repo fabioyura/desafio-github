@@ -10,7 +10,9 @@ class GitRepListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => openScreen(context, const PullRequestPage()),
+      onTap: () {
+        openScreen(context, PullRequestPage(rep: rep));
+      },
       child: Card(
         child: Column(
           children: [
