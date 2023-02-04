@@ -22,7 +22,6 @@ class PullRequestRemoteDataSourceImp implements IPullRequestDataSource {
     if (response.statusCode == 200) {
       final jsonList = jsonDecode(response.body) as List;
       final jsonMap = jsonList.map((e) => PullRequestModel.fromMap(e)).toList();
-      print(url);
       return Right(jsonMap);
     } else {
       return Left(DataFailure(message: response.body));

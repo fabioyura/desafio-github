@@ -20,7 +20,6 @@ class GitRepListItem extends StatelessWidget {
             Text('Descrição: ${rep.description}', maxLines: 1),
             Text('Nome de usuário: ${rep.userName}'),
             Text('Avatar URL: ${rep.userAvatarURL}'),
-            Text('Pulls URL: ${rep.pullsURL}'),
             Text('Stars: ${rep.stars}'),
             Text('Forks: ${rep.forks}'),
           ],

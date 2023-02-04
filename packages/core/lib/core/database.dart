@@ -10,8 +10,6 @@ class DataBase {
     final http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      //Catch the response.body and convert to List = JsonEncode
-      //TODO: IMPLEMENT COMMENTARY
       final String json = jsonEncode(jsonDecode(response.body)["items"]);
       return Right(json);
     } else {

@@ -6,7 +6,7 @@ import 'package:core/layers/data/models/pull_request_model.dart';
 class PullRequestMockRepository extends Mock implements IPullRequestRepository {
 }
 
-PullRequest pullRequestMockEntity = PullRequest(
+PullRequest pullRequestMockEntity = const PullRequest(
   title: 'title',
   body: 'body',
   userName: 'userName',
@@ -14,7 +14,7 @@ PullRequest pullRequestMockEntity = PullRequest(
   //createdAt: DateTime(2020),
 );
 
-PullRequestModel pullRequestMockModel = PullRequestModel(
+PullRequestModel pullRequestMockModel = const PullRequestModel(
   title: 'title',
   body: 'body',
   userName: 'userName',

@@ -9,7 +9,6 @@ class PrListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Titulo: ${pr.title}'),
           Text('Body: ${pr.body}'),

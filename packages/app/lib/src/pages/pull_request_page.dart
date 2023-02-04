@@ -3,8 +3,6 @@ import 'package:app/src/widgets/list_items/pr_list_item.dart';
 import 'package:core/core/bloc/pr_bloc/pr_bloc.dart';
 import 'package:core/core/bloc/pr_bloc/pr_event.dart';
 import 'package:core/core/bloc/pr_bloc/pr_state.dart';
-import 'package:core/layers/data/datasource/remote/pull_request_remote_datasource_imp.dart';
-import 'package:core/layers/data/repositories/pull_request_repository_imp.dart';
 import 'package:core/layers/domain/entities/git_rep.dart';
 import 'package:core/layers/domain/entities/pull_request.dart';
 import 'package:core/layers/domain/usecases/get_pull_request_usecase.dart';
@@ -21,18 +19,10 @@ class PullRequestPage extends StatefulWidget {
 
 class _PullRequestPageState extends State<PullRequestPage> {
   late final PrBloc bloc;
-  late final PullRequestRemoteDataSourceImp datasource =
-      PullRequestRemoteDataSourceImp();
-
-  late final PullRequestRepositoryImp repository =
-      PullRequestRepositoryImp(dataSource: datasource);
-
-  late final GetPullRequestUseCase useCase =
-      GetPullRequestUseCase(repository: repository);
 
   @override
   void initState() {
-    bloc = PrBloc(loadCase: useCase, rep: widget.rep);
+    bloc = PrBloc(loadCase: getIt<GetPullRequestUseCase>(), rep: widget.rep);
     bloc.add(OnPrEventLoad());
     super.initState();
   }
@@ -43,6 +33,7 @@ class _PullRequestPageState extends State<PullRequestPage> {
       create: (context) => bloc,
       child: Scaffold(
         appBar: AppBar(
+          title: Text(widget.rep.name),
           leading: const BackButton(),
         ),
         body: SingleChildScrollView(
@@ -54,7 +45,8 @@ class _PullRequestPageState extends State<PullRequestPage> {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is PrStateEmpty) {
-                return const Text('Nennhum Pull Request Encontrado!');
+                return const Center(
+                    child: Text('Nennhum Pull Request Encontrado!'));
               } else if (state is PrStateLoaded) {
                 final List<PullRequest> prs = state.list;
                 return ListView.builder(
