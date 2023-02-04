@@ -31,32 +31,31 @@ class _HomePageState extends State<HomePage> {
     return BlocProvider(
       create: (context) => bloc,
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: BlocBuilder(
-            bloc: bloc,
-            builder: (context, state) {
-              if (state is GitRepStateNotLoaded) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is GitRepStateEmpty) {
-                return const Center(
-                    child: Text('Nenhum repositório encontrado!'));
-              } else if (state is GitRepStateError) {
-                return Text('State Error: ${state.error}');
-              } else if (state is GitRepStateLoaded) {
-                List<GitRep> repositories = state.list;
-                return ListView.builder(
-                  itemCount: repositories.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return GitRepListItem(rep: repositories[index]);
-                  },
-                );
-              }
-              return Container();
-            },
-          ),
+        body: BlocBuilder(
+          bloc: bloc,
+          builder: (context, state) {
+            if (state is GitRepStateNotLoaded) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is GitRepStateEmpty) {
+              return const Center(
+                  child: Text('Nenhum repositório encontrado!'));
+            } else if (state is GitRepStateError) {
+              return Text('State Error: ${state.error}');
+            } else if (state is GitRepStateLoaded) {
+              List<GitRep> repositories = state.list;
+              return ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: repositories.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return GitRepListItem(rep: repositories[index]);
+                },
+              );
+            }
+            return Container();
+          },
         ),
       ),
     );

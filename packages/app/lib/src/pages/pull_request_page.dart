@@ -36,30 +36,29 @@ class _PullRequestPageState extends State<PullRequestPage> {
           title: Text(widget.rep.name),
           leading: const BackButton(),
         ),
-        body: SingleChildScrollView(
-          child: BlocBuilder(
-            bloc: bloc,
-            builder: (context, state) {
-              if (state is PrStateNotLoaded) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is PrStateEmpty) {
-                return const Center(
-                    child: Text('Nennhum Pull Request Encontrado!'));
-              } else if (state is PrStateLoaded) {
-                final List<PullRequest> prs = state.list;
-                return ListView.builder(
-                  itemCount: prs.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return PrListItem(pr: prs[index]);
-                  },
-                );
-              }
-              return const ListTile();
-            },
-          ),
+        body: BlocBuilder(
+          bloc: bloc,
+          builder: (context, state) {
+            if (state is PrStateNotLoaded) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is PrStateEmpty) {
+              return const Center(
+                  child: Text('Nennhum Pull Request Encontrado!'));
+            } else if (state is PrStateLoaded) {
+              final List<PullRequest> prs = state.list;
+              return ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: prs.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return PrListItem(pr: prs[index]);
+                },
+              );
+            }
+            return const ListTile();
+          },
         ),
       ),
     );
