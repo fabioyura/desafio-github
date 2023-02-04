@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     return BlocProvider(
       create: (context) => bloc,
       child: Scaffold(
+        appBar: AppBar(title: const Center(child: Text('Repositórios'))),
         body: BlocBuilder(
           bloc: bloc,
           builder: (context, state) {

@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Desafio GitHub',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(appBarTheme: const AppBarTheme(color: Colors.black87)),
         home: const HomePage());
   }
 }
