@@ -1,4 +1,5 @@
 import 'package:app/helpers/helpers.dart';
+import 'package:app/helpers/ts.dart';
 import 'package:app/src/pages/pull_request_page.dart';
 import 'package:core/layers/domain/entities/git_rep.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,42 @@ class GitRepListItem extends StatelessWidget {
       onTap: () {
         openScreen(context, PullRequestPage(rep: rep));
       },
-      child: Card(
-        child: Column(
-          children: [
-            Text('Nome: ${rep.name}'),
-            Text('Descrição: ${rep.description}', maxLines: 1),
-            Text('Nome de usuário: ${rep.userName}'),
-            Text('Avatar URL: ${rep.userAvatarURL}'),
-            Text('Stars: ${rep.stars}'),
-            Text('Forks: ${rep.forks}'),
-          ],
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / 4,
+        child: Card(
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Text('Nome: ${rep.name}', style: ts.title),
+                  Text(
+                    'Descrição: ${rep.description}',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: ts.body,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.share, color: Colors.amber),
+                      Text('Forks: ${rep.forks}', style: ts.icon),
+                      Row(
+                        children: [
+                          const Icon(Icons.grade, color: Colors.amber),
+                          Text('Stars: ${rep.stars}', style: ts.icon),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Image.network(rep.userAvatarURL),
+                  Text('Nome de usuário: ${rep.userName}', style: ts.user),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
