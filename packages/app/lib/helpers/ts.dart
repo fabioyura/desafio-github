@@ -5,23 +5,23 @@ class Ts {
   TextStyle title = GoogleFonts.openSans(
     color: const Color.fromARGB(255, 13, 81, 16),
     fontWeight: FontWeight.w700,
-    fontSize: 35,
+    fontSize: 20,
   );
 
   TextStyle body = GoogleFonts.openSans(
     color: Colors.black,
-    fontSize: 20,
+    fontSize: 14,
   );
 
   TextStyle icon = GoogleFonts.openSans(
     color: Colors.amber,
     fontWeight: FontWeight.w700,
-    fontSize: 35,
+    fontSize: 14,
   );
 
   TextStyle user = GoogleFonts.openSans(
     color: const Color.fromARGB(255, 13, 81, 16),
-    fontSize: 20,
+    fontSize: 12,
   );
 }
 

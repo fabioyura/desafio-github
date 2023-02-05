@@ -2,8 +2,8 @@ import 'package:app/helpers/injection.dart';
 import 'package:app/src/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  setupProviders();
+void main() async {
+  await setupProviders();
   runApp(const MyApp());
 }
 

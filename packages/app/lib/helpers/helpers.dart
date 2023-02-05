@@ -1,3 +1,4 @@
+import 'package:app/helpers/ts.dart';
 import 'package:flutter/material.dart';
 
 Route animatedRoute(context, page) {
@@ -23,10 +24,10 @@ openScreen(BuildContext context, screen, {origin}) {
   Navigator.of(context).push(animatedRoute(context, screen));
 }
 
-replaceScreen(BuildContext context, screen, {origin}) {
-  Navigator.of(context).pushReplacement(animatedRoute(context, screen));
-}
-
 closeScreen(context, code, {var returnValue}) {
   Navigator.of(context).pop(returnValue);
+}
+
+initializeTs() {
+  ts = Ts();
 }
