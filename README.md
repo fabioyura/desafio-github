@@ -22,7 +22,6 @@
     
     
      
-     Foi utilizado o MonoRepo como estratégia de organização. Dentro da pasta 'packages' contém um projeto "Core", localizado toda a Regra de Negócio e no projeto 
-"App", que contém os widgets e arquivos necessários para rodar o App.
+     Foi utilizado o MonoRepo como estratégia de organização. Dentro da pasta 'packages' contém um projeto "Core", localizado toda a Regra de Negócio e no projeto "App", que contém os widgets e arquivos necessários para rodar o App.
 
      Para executar, basta clonar o repositório e executar main.dart, localizado na pasta 'packages:app/lib/main.dart'
