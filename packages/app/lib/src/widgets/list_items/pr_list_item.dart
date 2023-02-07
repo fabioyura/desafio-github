@@ -1,3 +1,5 @@
+import 'package:app/helpers/ts.dart';
+import 'package:app/src/widgets/abstract_card.dart';
 import 'package:core/layers/domain/entities/pull_request.dart';
 import 'package:flutter/material.dart';
 
@@ -7,15 +9,18 @@ class PrListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          Text('Titulo: ${pr.title}'),
-          Text('Body: ${pr.body}'),
-          Text('UserName: ${pr.userName}'),
-          Text('Avatar URL: ${pr.userAvatarURL}'),
-        ],
-      ),
+    return AbstractCard(
+      userName: pr.userName,
+      avatar: pr.userAvatarURL,
+      children: [
+        Text(pr.title, style: ts.title),
+        Text(
+          pr.body,
+          maxLines: 3,
+          style: ts.body,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
     );
   }
 }

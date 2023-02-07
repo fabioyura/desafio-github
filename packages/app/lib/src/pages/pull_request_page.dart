@@ -33,7 +33,7 @@ class _PullRequestPageState extends State<PullRequestPage> {
       create: (context) => bloc,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.rep.name),
+          title: Text('${widget.rep.name} - Pull Requests'),
           leading: const BackButton(),
         ),
         body: BlocBuilder(

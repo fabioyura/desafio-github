@@ -1,5 +1,5 @@
 import 'package:app/helpers/injection.dart';
-import 'package:app/src/widgets/list_items/git_rep_list_item.dart';
+import 'package:app/src/widgets/list_items/repository_list_item.dart';
 import 'package:core/core/bloc/git_rep_bloc/git_rep_bloc.dart';
 import 'package:core/core/bloc/git_rep_bloc/git_rep_event.dart';
 import 'package:core/core/bloc/git_rep_bloc/git_rep_state.dart';
@@ -8,14 +8,14 @@ import 'package:core/layers/domain/repositories/i_git_rep_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class RepositoryPage extends StatefulWidget {
+  const RepositoryPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RepositoryPage> createState() => _RepositoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RepositoryPageState extends State<RepositoryPage> {
   late final GitRepBloc bloc;
   late final IGitRepRepository repository;
 
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: repositories.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return GitRepListItem(rep: repositories[index]);
+                  return RepositoryListItem(rep: repositories[index]);
                 },
               );
             }
