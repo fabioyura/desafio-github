@@ -27,7 +27,7 @@ setupProviders() {
       () => GitRepBloc(loadCase: getIt<GetGitRepUseCase>()));
 
   getIt.registerLazySingleton<IPullRequestDataSource>(
-      () => PullRequestRemoteDataSourceImp());
+      () => PullRequestRemoteDataSourceImp(dataBase: getIt<DataBase>()));
   getIt.registerLazySingleton<IPullRequestRepository>(() =>
       PullRequestRepositoryImp(dataSource: getIt<IPullRequestDataSource>()));
   getIt.registerLazySingleton<GetPullRequestUseCase>(
